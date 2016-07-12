@@ -12,9 +12,9 @@ namespace Tests
         {
             //arrange
             Game game = new Game();
-            game.play("rock", "scissors");
-            game.play("rock", "scissors");
-            game.play("rock", "scissors");
+            game.RunTheRound("rock", "scissors");
+            game.RunTheRound("rock", "scissors");
+            game.RunTheRound("rock", "scissors");
 
             //act
             string result = game.CheckForWin();
@@ -28,9 +28,9 @@ namespace Tests
         {
             //arrange
             Game game = new Game();
-            game.play("scissors", "rock");
-            game.play("scissors", "rock");
-            game.play("scissors", "rock");
+            game.RunTheRound("scissors", "rock");
+            game.RunTheRound("scissors", "rock");
+            game.RunTheRound("scissors", "rock");
 
             //act
             string result = game.CheckForWin();
@@ -44,9 +44,9 @@ namespace Tests
         {
             //arrange
             Game game = new Game();
-            game.play("rock", "rock");
-            game.play("rock", "rock");
-            game.play("rock", "rock");
+            game.RunTheRound("rock", "rock");
+            game.RunTheRound("rock", "rock");
+            game.RunTheRound("rock", "rock");
 
             //act
             string result = game.CheckForWin();

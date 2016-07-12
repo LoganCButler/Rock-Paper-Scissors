@@ -12,7 +12,20 @@ namespace AppLogic
         private int playerScore = 0;
         private int computerScore = 0;
 
-        public void play(string playerMove, string computerMove)
+        public void PlayARound(string playerMove)
+        {
+            RunTheRound(playerMove, ComputerMove());
+        }
+
+        private string ComputerMove()
+        {
+            string[] computerMoveOptions = { "rock", "papper", "sciccors" };
+
+            Random random = new Random();
+            return computerMoveOptions[random.Next(1, 3)];
+        }
+
+        public void RunTheRound(string playerMove, string computerMove)
         {
             switch (playerMove)
             {
