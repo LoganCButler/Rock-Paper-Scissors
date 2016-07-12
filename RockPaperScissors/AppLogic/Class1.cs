@@ -32,6 +32,38 @@ namespace AppLogic
                         break;
                     }
                     break;
+                case "papper":
+                    if (computerMove == "rock")
+                    {
+                        playerScore += 1;
+                        break;
+                    }
+                    if (computerMove == "paper")
+                    {
+                        break;
+                    }
+                    if (computerMove == "scissors")
+                    {
+                        computerScore += 1;
+                        break;
+                    }
+                    break;
+                case "scissors":
+                    if (computerMove == "rock")
+                    {
+                        computerScore += 1;
+                        break;
+                    }
+                    if (computerMove == "paper")
+                    {
+                        playerScore += 1;
+                        break;
+                    }
+                    if (computerMove == "scissors")
+                    {
+                        break;
+                    }
+                    break;
             }
         }
 
@@ -41,9 +73,9 @@ namespace AppLogic
             {
                 return "Player One Wins!";
             }
-            if (playerScore == 3)
+            if (computerScore == 3)
             {
-                return "Player One Wins";
+                return "Computer Wins";
             }
             return "";
         }
