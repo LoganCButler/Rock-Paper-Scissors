@@ -15,6 +15,8 @@ namespace AppLogic
         public void PlayARound(string playerMove)
         {
             RunTheRound(playerMove, ComputerMove());
+            Console.WriteLine("Player Score {0} : Computer Score {1}", playerScore, computerScore);
+            CheckForWin();
         }
 
         private string ComputerMove()
@@ -22,7 +24,7 @@ namespace AppLogic
             string[] computerMoveOptions = { "rock", "papper", "sciccors" };
 
             Random random = new Random();
-            return computerMoveOptions[random.Next(1, 3)];
+            return computerMoveOptions[random.Next(0, 2)];
         }
 
         public void RunTheRound(string playerMove, string computerMove)
