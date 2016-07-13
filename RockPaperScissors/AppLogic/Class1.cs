@@ -12,6 +12,7 @@ namespace AppLogic
         public int playerScore = 0;
         public int computerScore = 0;
     }
+
     public class Game
     {
         Score gameScore = new Score();
@@ -31,7 +32,7 @@ namespace AppLogic
             return computerMoveOptions[random.Next(0, 3)];
         }
 
-        public void RunTheRound(string playerMove, string computerMove)
+        private void RunTheRound(string playerMove, string computerMove)
         {
             switch (playerMove)
             {
@@ -88,7 +89,7 @@ namespace AppLogic
             Console.WriteLine( CheckForWin());
         }
 
-        public string CheckForWin()
+        private string CheckForWin()
         {
             if(gameScore.playerScore == 3)
             {

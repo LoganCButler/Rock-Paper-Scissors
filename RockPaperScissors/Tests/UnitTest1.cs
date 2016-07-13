@@ -1,72 +1,72 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using AppLogic;
+﻿//using System;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using AppLogic;
 
-namespace Tests
-{
-    [TestClass]
-    public class UnitTest1
-    {
-        [TestMethod]
-        public void PlayerWinsWithRockRockRock()
-        {
-            //arrange
-            Game game = new Game();
-            game.RunTheRound("rock", "scissors");
-            game.RunTheRound("rock", "scissors");
-            game.RunTheRound("rock", "scissors");
+//namespace Tests
+//{
+//    [TestClass]
+//    public class UnitTest1
+//    {
+//        [TestMethod]
+//        public void PlayerWinsWithRockRockRock()
+//        {
+//            //arrange
+//            Game game = new Game();
+//            game.RunTheRound("rock", "scissors");
+//            game.RunTheRound("rock", "scissors");
+//            game.RunTheRound("rock", "scissors");
 
-            //act
-            string result = game.CheckForWin();
+//            //act
+//            string result = game.CheckForWin();
 
-            //assert
-            Assert.AreEqual("Player One Wins!", result);
-        }
+//            //assert
+//            Assert.AreEqual("Player One Wins!", result);
+//        }
 
-        [TestMethod]
-        public void ComputerWinsWithRockRockRock()
-        {
-            //arrange
-            Game game = new Game();
-            game.RunTheRound("scissors", "rock");
-            game.RunTheRound("scissors", "rock");
-            game.RunTheRound("scissors", "rock");
+//        [TestMethod]
+//        public void ComputerWinsWithRockRockRock()
+//        {
+//            //arrange
+//            Game game = new Game();
+//            game.RunTheRound("scissors", "rock");
+//            game.RunTheRound("scissors", "rock");
+//            game.RunTheRound("scissors", "rock");
 
-            //act
-            string result = game.CheckForWin();
+//            //act
+//            string result = game.CheckForWin();
 
-            //assert
-            Assert.AreEqual("Computer Wins", result);
-        }
+//            //assert
+//            Assert.AreEqual("Computer Wins", result);
+//        }
 
-        [TestMethod]
-        public void ThreeRoundsWithNoWinner()
-        {
-            //arrange
-            Game game = new Game();
-            game.RunTheRound("rock", "rock");
-            game.RunTheRound("rock", "rock");
-            game.RunTheRound("rock", "rock");
+//        [TestMethod]
+//        public void ThreeRoundsWithNoWinner()
+//        {
+//            //arrange
+//            Game game = new Game();
+//            game.RunTheRound("rock", "rock");
+//            game.RunTheRound("rock", "rock");
+//            game.RunTheRound("rock", "rock");
 
-            //act
-            string result = game.CheckForWin();
+//            //act
+//            string result = game.CheckForWin();
 
-            //assert
-            Assert.AreEqual("", result);
-        }
+//            //assert
+//            Assert.AreEqual("", result);
+//        }
 
-        [TestMethod]
-        public void OneRoundWithComputer()
-        {
-            //arrange
-            Game game = new Game();
-            game.PlayARound("rock");
+//        [TestMethod]
+//        public void OneRoundWithComputer()
+//        {
+//            //arrange
+//            Game game = new Game();
+//            game.PlayARound("rock");
 
-            //act
-            string result = game.CheckForWin();
+//            //act
+//            string result = game.CheckForWin();
 
-            //assert
-            Assert.IsTrue(true);
-        }
-    }
-}
+//            //assert
+//            Assert.IsTrue(true);
+//        }
+//    }
+//}
