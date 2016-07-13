@@ -15,7 +15,7 @@ namespace RockPaperScissors
             while (rps.gameContinue)
             {
                 Console.WriteLine("Enter in a move");
-                rps.PlayARound(Console.ReadLine());
+                rps.PlayARound(Console.ReadLine(), rps.GetComputerMove());
             }
             Console.ReadLine();
         }

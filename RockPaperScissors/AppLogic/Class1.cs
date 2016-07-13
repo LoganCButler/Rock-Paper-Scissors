@@ -16,14 +16,18 @@ namespace AppLogic
     public class Game
     {
         Score gameScore = new Score();
+        private int winningScore = 3;
         public bool gameContinue = true;
 
-        public void PlayARound(string playerMove)
+        public void PlayARound(string playerMove, string computerMove)
         {
-            RunTheRound(playerMove, ComputerMove());
+            RunTheRound(playerMove, computerMove);
             Console.WriteLine("Player Score {0} : Computer Score {1}\n", gameScore.playerScore , gameScore.computerScore);
         }
-
+        public string GetComputerMove()
+        {
+            return ComputerMove();
+        }
         private string ComputerMove()
         {
             string[] computerMoveOptions = { "rock", "paper", "scissors" };
@@ -91,17 +95,24 @@ namespace AppLogic
 
         private string CheckForWin()
         {
-            if(gameScore.playerScore == 3)
+            if(gameScore.playerScore == winningScore)
             {
                 gameContinue = false;
                 return "Player One Wins!";
             }
-            if (gameScore.computerScore == 3)
+            if (gameScore.computerScore == winningScore)
             {
                 gameContinue = false;
                 return "Computer Wins";
             }
             return "";
+        }
+
+        //This is used for testing
+        public int[] GetGameScore()
+        {
+            int[] s = new int[] { gameScore.playerScore, gameScore.computerScore};
+            return s;
         }
     }
 }

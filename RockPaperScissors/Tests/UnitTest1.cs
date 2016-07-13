@@ -1,72 +1,91 @@
-﻿//using System;
-//using Microsoft.VisualStudio.TestTools.UnitTesting;
-//using AppLogic;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using AppLogic;
 
-//namespace Tests
-//{
-//    [TestClass]
-//    public class UnitTest1
-//    {
-//        [TestMethod]
-//        public void PlayerWinsWithRockRockRock()
-//        {
-//            //arrange
-//            Game game = new Game();
-//            game.RunTheRound("rock", "scissors");
-//            game.RunTheRound("rock", "scissors");
-//            game.RunTheRound("rock", "scissors");
+namespace Tests
+{
+    [TestClass]
+    public class AccessingEntryPont
+    {
+        [TestMethod]
+    public void ValidateGameContinue()
+        {
+            //arrange
+            Game game = new Game();
+            //act
+            game.PlayARound("try",game.GetComputerMove());
 
-//            //act
-//            string result = game.CheckForWin();
+            //assert
+            Assert.IsTrue(game.gameContinue);
+        }
 
-//            //assert
-//            Assert.AreEqual("Player One Wins!", result);
-//        }
+       
+    }
+    [TestClass]
+    public class AccessingPrivateMethods
+    {
+        [TestMethod]
+        public void PlayerWinsWithRockRockRock()
+        {
+            //arrange
+            Game game = new Game();
+            game.PlayARound("rock", "scissors");
+            game.PlayARound("rock", "scissors");
+            game.PlayARound("rock", "scissors");
 
-//        [TestMethod]
-//        public void ComputerWinsWithRockRockRock()
-//        {
-//            //arrange
-//            Game game = new Game();
-//            game.RunTheRound("scissors", "rock");
-//            game.RunTheRound("scissors", "rock");
-//            game.RunTheRound("scissors", "rock");
+            //act
+            var result = game.GetGameScore();
 
-//            //act
-//            string result = game.CheckForWin();
+            //assert
+            Assert.AreEqual(3, result[0]);//player score
+            Assert.AreEqual(0, result[1]); //computer score
+        }
 
-//            //assert
-//            Assert.AreEqual("Computer Wins", result);
-//        }
+        [TestMethod]
+        public void ComputerWinsWithRockRockRock()
+        {
+            //arrange
+            Game game = new Game();
+            game.PlayARound("scissors", "rock");
+            game.PlayARound("scissors", "rock");
+            game.PlayARound("scissors", "rock");
 
-//        [TestMethod]
-//        public void ThreeRoundsWithNoWinner()
-//        {
-//            //arrange
-//            Game game = new Game();
-//            game.RunTheRound("rock", "rock");
-//            game.RunTheRound("rock", "rock");
-//            game.RunTheRound("rock", "rock");
+            //act
+            var result = game.GetGameScore();
 
-//            //act
-//            string result = game.CheckForWin();
+            //assert
+            Assert.AreEqual(0, result[0]);//player score
+            Assert.AreEqual(3, result[1]); //computer score
+        }
 
-//            //assert
-//            Assert.AreEqual("", result);
-//        }
+        [TestMethod]
+        public void ThreeRoundsWithNoWinner()
+        {
+            //arrange
+            Game game = new Game();
+            game.PlayARound("rock", "rock");
+            game.PlayARound("rock", "rock");
+            game.PlayARound("rock", "rock");
 
-//        [TestMethod]
-//        public void OneRoundWithComputer()
-//        {
-//            //arrange
-//            Game game = new Game();
-//            game.PlayARound("rock");
+            //act
+            var result = game.GetGameScore();
 
-//            //act
-//            string result = game.CheckForWin();
+            //assert
+            Assert.AreEqual(0, result[0]);//player score
+            Assert.AreEqual(0, result[1]); //computer score
+        }
 
-//            //assert
-//            Assert.IsTrue(true);
-//        }
-//    }
-//}
+        [TestMethod]
+        public void ComputerCanMakeAMove()
+        {
+            //arrange
+            Game game = new Game();
+
+            //act
+            string result = game.GetComputerMove();
+
+            //assert
+            Assert.IsNotNull(result);
+        }
+    }
+}
