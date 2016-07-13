@@ -7,24 +7,28 @@ using System.Threading.Tasks;
 
 namespace AppLogic
 {
+    public class Score
+    {
+        public int playerScore = 0;
+        public int computerScore = 0;
+    }
     public class Game
     {
-        private int playerScore = 0;
-        private int computerScore = 0;
+        Score gameScore = new Score();
+        public bool gameContinue = true;
 
         public void PlayARound(string playerMove)
         {
             RunTheRound(playerMove, ComputerMove());
-            Console.WriteLine("Player Score {0} : Computer Score {1}", playerScore, computerScore);
-            CheckForWin();
+            Console.WriteLine("Player Score {0} : Computer Score {1}\n", gameScore.playerScore , gameScore.computerScore);
         }
 
         private string ComputerMove()
         {
-            string[] computerMoveOptions = { "rock", "papper", "sciccors" };
+            string[] computerMoveOptions = { "rock", "paper", "scissors" };
 
             Random random = new Random();
-            return computerMoveOptions[random.Next(0, 2)];
+            return computerMoveOptions[random.Next(0, 3)];
         }
 
         public void RunTheRound(string playerMove, string computerMove)
@@ -38,19 +42,19 @@ namespace AppLogic
                     }
                     if (computerMove == "paper")
                     {
-                        computerScore += 1;
+                        gameScore.computerScore += 1;
                         break;
                     }
                     if (computerMove == "scissors")
                     {
-                        playerScore += 1;
+                        gameScore.playerScore += 1;
                         break;
                     }
                     break;
-                case "papper":
+                case "paper":
                     if (computerMove == "rock")
                     {
-                        playerScore += 1;
+                        gameScore.playerScore += 1;
                         break;
                     }
                     if (computerMove == "paper")
@@ -59,19 +63,19 @@ namespace AppLogic
                     }
                     if (computerMove == "scissors")
                     {
-                        computerScore += 1;
+                        gameScore.computerScore += 1;
                         break;
                     }
                     break;
                 case "scissors":
                     if (computerMove == "rock")
                     {
-                        computerScore += 1;
+                        gameScore.computerScore += 1;
                         break;
                     }
                     if (computerMove == "paper")
                     {
-                        playerScore += 1;
+                        gameScore.playerScore += 1;
                         break;
                     }
                     if (computerMove == "scissors")
@@ -80,16 +84,20 @@ namespace AppLogic
                     }
                     break;
             }
+            Console.WriteLine("You played {0}, the computer played {1}.", playerMove, computerMove);
+            Console.WriteLine( CheckForWin());
         }
 
         public string CheckForWin()
         {
-            if(playerScore == 3)
+            if(gameScore.playerScore == 3)
             {
+                gameContinue = false;
                 return "Player One Wins!";
             }
-            if (computerScore == 3)
+            if (gameScore.computerScore == 3)
             {
+                gameContinue = false;
                 return "Computer Wins";
             }
             return "";

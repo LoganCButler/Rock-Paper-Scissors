@@ -54,5 +54,19 @@ namespace Tests
             //assert
             Assert.AreEqual("", result);
         }
+
+        [TestMethod]
+        public void OneRoundWithComputer()
+        {
+            //arrange
+            Game game = new Game();
+            game.PlayARound("rock");
+
+            //act
+            string result = game.CheckForWin();
+
+            //assert
+            Assert.IsTrue(true);
+        }
     }
 }
