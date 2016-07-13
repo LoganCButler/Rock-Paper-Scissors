@@ -14,9 +14,10 @@ namespace RockPaperScissors
             Game rps = new Game();
             while (rps.gameContinue)
             {
-                Console.WriteLine("Enter in a move");
+                Console.WriteLine("Enter in a move: rock, paper, or scissors.");
                 rps.PlayARound(Console.ReadLine(), rps.GetComputerMove());
             }
+            Console.WriteLine("Good Game!");
             Console.ReadLine();
         }
     }

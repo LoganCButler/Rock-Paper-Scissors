@@ -8,22 +8,17 @@ namespace Tests
     public class AccessingEntryPont
     {
         [TestMethod]
-    public void ValidateGameContinue()
+        public void ValidateGameContinue()
         {
             //arrange
             Game game = new Game();
             //act
-            game.PlayARound("try",game.GetComputerMove());
+            game.PlayARound("try", game.GetComputerMove());
 
             //assert
             Assert.IsTrue(game.gameContinue);
         }
 
-       
-    }
-    [TestClass]
-    public class AccessingPrivateMethods
-    {
         [TestMethod]
         public void PlayerWinsWithRockRockRock()
         {
@@ -76,6 +71,23 @@ namespace Tests
         }
 
         [TestMethod]
+        public void PlayerMakesInvalidMove()
+        {
+            //arrange
+            Game game = new Game();
+            game.PlayARound("bomb", "rock");
+            game.PlayARound("bomb", "rock");
+            game.PlayARound("bomb", "rock");
+
+            //act
+            var result = game.GetGameScore();
+
+            //assert
+            Assert.AreEqual(0, result[0]);//player score
+            Assert.AreEqual(0, result[1]); //computer score
+        }
+
+        [TestMethod]
         public void ComputerCanMakeAMove()
         {
             //arrange
@@ -85,7 +97,22 @@ namespace Tests
             string result = game.GetComputerMove();
 
             //assert
-            Assert.IsNotNull(result);
+            Assert.IsTrue(result == "rock" || result == "paper" || result == "scissors");
+        }
+
+        [TestMethod]
+        public void ValidatePrintOutInRound3()
+        {
+            //arrange
+            Game game = new Game();
+            game.PlayARound("rock", "scissors");
+            game.PlayARound("paper", "scissors");
+            
+            //act
+            string result = game.PlayARound("rock", "scissors");
+
+            //assert
+            Assert.AreEqual("Player Score 2 : Computer Score 1", result);
         }
     }
 }

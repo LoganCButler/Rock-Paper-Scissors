@@ -19,15 +19,21 @@ namespace AppLogic
         private int winningScore = 3;
         public bool gameContinue = true;
 
-        public void PlayARound(string playerMove, string computerMove)
+        //entrypoints
+        public string PlayARound(string playerMove, string computerMove)
         {
             RunTheRound(playerMove, computerMove);
-            Console.WriteLine("Player Score {0} : Computer Score {1}\n", gameScore.playerScore , gameScore.computerScore);
+            string scorePrintString = ("Player Score " + GetGameScore()[0] + " : Computer Score " + GetGameScore()[1]);            
+            Console.WriteLine(scorePrintString + "\n");
+            Console.WriteLine(CheckForWin());
+            return scorePrintString; //returning for unit test
         }
         public string GetComputerMove()
         {
             return ComputerMove();
         }
+
+        //game logic
         private string ComputerMove()
         {
             string[] computerMoveOptions = { "rock", "paper", "scissors" };
@@ -88,9 +94,8 @@ namespace AppLogic
                         break;
                     }
                     break;
-            }
+            }         
             Console.WriteLine("You played {0}, the computer played {1}.", playerMove, computerMove);
-            Console.WriteLine( CheckForWin());
         }
 
         private string CheckForWin()
@@ -108,10 +113,11 @@ namespace AppLogic
             return "";
         }
 
-        //This is used for testing
+
+        //This is public to use in testing
         public int[] GetGameScore()
         {
-            int[] s = new int[] { gameScore.playerScore, gameScore.computerScore};
+            int[] s = new int[] { gameScore.playerScore, gameScore.computerScore };
             return s;
         }
     }
