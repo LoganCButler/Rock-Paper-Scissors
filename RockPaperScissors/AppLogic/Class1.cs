@@ -43,14 +43,10 @@ namespace AppLogic
         }
 
         private void RunTheRound(string playerMove, string computerMove)
-        {
+        {         
             switch (playerMove)
-            {
-                case "rock":
-                    if (computerMove == "rock")
-                    {
-                        break;
-                    }
+            {            
+                case "rock":                                      
                     if (computerMove == "paper")
                     {
                         gameScore.computerScore += 1;
@@ -68,10 +64,6 @@ namespace AppLogic
                         gameScore.playerScore += 1;
                         break;
                     }
-                    if (computerMove == "paper")
-                    {
-                        break;
-                    }
                     if (computerMove == "scissors")
                     {
                         gameScore.computerScore += 1;
@@ -87,10 +79,6 @@ namespace AppLogic
                     if (computerMove == "paper")
                     {
                         gameScore.playerScore += 1;
-                        break;
-                    }
-                    if (computerMove == "scissors")
-                    {
                         break;
                     }
                     break;
